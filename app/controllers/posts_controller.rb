@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     end
 
     def search_posts
-      post = Post.where("content LIKE ?", "%" + params[:content] + "%").or(Post.where("category LIKE ?", "%" + params[:content] + "%")).or(Post.where("title LIKE ?", "%" + params[:content] + "%"))
+      post = Post.where("content ILIKE ?", "%" + params[:content] + "%").or(Post.where("category ILIKE ?", "%" + params[:content] + "%")).or(Post.where("title ILIKE ?", "%" + params[:content] + "%"))
       render json: post, include: [:user]
     end
   
