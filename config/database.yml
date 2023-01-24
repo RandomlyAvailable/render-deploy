@@ -29,9 +29,5 @@ test:
   password: 123456
 
 production:
-  adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-  database: myapp_production
-  username: vishnu
-  password: 123456
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
